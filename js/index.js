@@ -15,6 +15,7 @@ $(window).on('load', function () {
 	$('.lds-ellipsis').fadeOut(); // will first fade out the loading animation
 	$('.preloader').delay(333).fadeOut('slow'); // will fade out the white DIV that covers the website.
 	$('body').delay(333);
+	$("#span_edad").text((new Date()).getFullYear()-1997);
 });
 
 
@@ -384,3 +385,18 @@ form.on('submit', function (e) {
 });
 
 })(jQuery)
+
+
+function calculateAge (birthDate, otherDate) {
+    birthDate = new Date(birthDate);
+    otherDate = new Date(otherDate);
+
+    var years = (otherDate.getFullYear() - birthDate.getFullYear());
+
+    if (otherDate.getMonth() < birthDate.getMonth() || 
+        otherDate.getMonth() == birthDate.getMonth() && otherDate.getDate() < birthDate.getDate()) {
+        years--;
+    }
+
+    return years;
+}
